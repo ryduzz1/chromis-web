@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Chromis is a focused iPhone camera, media, and edit workspace for intentional mobile filmmaking.">
-    <title>Chromis - Camera, Media, Edit</title>
+    <meta name="description" content="Chromis is a professional iPhone filmmaking camera for Apple Log capture, LUT monitoring, color grading, scopes, and camera tracking.">
+    <title>Chromis - Shoot. Grade. Create.</title>
     <link rel="icon" href="assets/chromis-icon.png">
     <link rel="apple-touch-icon" href="assets/chromis-icon.png">
     <link rel="stylesheet" href="styles.css">
@@ -22,105 +22,141 @@
         </button>
         <div class="nav-menu" id="site-menu" data-nav-menu>
           <a href="#camera">Camera</a>
-          <a href="#edit">Edit</a>
-          <a href="#workflow">Workflow</a>
+          <a href="#grade">Grade</a>
+          <a href="#tracking">Tracking</a>
           <a href="privacy.html">Privacy</a>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="hero section-dark" id="top">
-        <div class="hero-copy">
+      <section class="hero" id="top">
+        <div class="hero-media" aria-hidden="true">
+          <img src="assets/chromis-field.jpeg" alt="">
+        </div>
+        <div class="hero-vignette" aria-hidden="true"></div>
+
+        <div class="hero-content">
           <p class="eyebrow">CHROMIS FOR IPHONE</p>
           <h1>Chromis</h1>
-          <p class="hero-subtitle">A focused iPhone filmmaking app for recording, reviewing, and color grading clips in one workspace.</p>
-          <div class="hero-points" aria-label="Core Chromis tools">
-            <span>Camera</span>
-            <span>Media</span>
-            <span>Edit</span>
-          </div>
+          <p class="hero-line">Shoot. Grade. Create.</p>
+          <p class="hero-subtitle">Cinematic video, Apple Log, LUTs, scopes, and professional color tools. All on iPhone.</p>
           <div class="hero-actions" aria-label="Chromis highlights">
-            <a class="button button-primary" href="#camera">See camera tools</a>
-            <a class="button button-ghost" href="#workflow">View workflow</a>
-          </div>
-        </div>
-
-        <div class="hero-stage" aria-label="Chromis app interface preview">
-          <div class="hero-workspace hero-device">
-            <img src="assets/chromis-scopes-wide.png" alt="Chromis edit workspace showing scopes, a graded mountain preview, and clip thumbnails.">
-          </div>
-          <div class="icon-plate">
-            <img src="assets/chromis-icon.png" alt="Chromis app icon">
+            <a class="button button-primary" href="#camera">Explore the app</a>
+            <a class="button button-ghost" href="#workflow">See workflow</a>
           </div>
         </div>
       </section>
 
-      <section class="product-strip section-light" aria-label="Chromis overview">
-        <div class="strip-inner">
-          <p>Capture in Apple Log, organize takes, grade the look, and export without switching apps.</p>
+      <section class="capture-section section-app" id="camera">
+        <div class="capture-copy" data-reveal>
+          <p class="eyebrow accent-camera">PROFESSIONAL CAMERA</p>
+          <h2>Capture the image.</h2>
+          <p>Record in Apple Log, monitor with LUTs, and keep every manual control close.</p>
         </div>
-      </section>
 
-      <section class="feature-hero section-dark" id="camera">
-        <div class="section-copy">
-          <p class="eyebrow accent-camera">CAMERA</p>
-          <h2>Manual camera control.</h2>
-          <p>Chromis keeps capture settings, monitor assists, storage behavior, and recording state visible without burying the image.</p>
-        </div>
-        <div class="wide-visual camera-wide" aria-label="Camera monitor visual">
-          <div class="camera-product-frame">
-            <img src="assets/chromis-camera.png" alt="Chromis camera screen showing a forest scene with recording controls and monitor assists.">
+        <div class="capture-stage" data-reveal>
+          <figure class="capture-frame">
+            <img src="assets/chromis-ridge.jpeg" alt="Mountain ridge footage captured with Chromis.">
+          </figure>
+          <div class="capture-phone" aria-label="Chromis camera interface preview">
+            <div class="phone-frame">
+              <img src="assets/chromis-camera.png" alt="Chromis camera screen with live monitor assists and capture controls.">
+            </div>
+          </div>
+          <div class="capture-specs" aria-label="Professional camera features">
+            <span>Apple Log</span>
+            <span>ProRes</span>
+            <span>Manual ISO, shutter, white balance, and focus</span>
+            <span>Histogram, horizon, grid, and preview LUTs</span>
           </div>
         </div>
       </section>
 
-      <section class="split-section section-panel" id="edit">
-        <div class="split-copy">
-          <p class="eyebrow accent-edit">EDIT</p>
-          <h2>Grade the shot.</h2>
-          <p>Dial primaries, crop, curves, HSL, looks, scopes, and output color without leaving the project.</p>
+      <section class="grade-section section-black" id="grade">
+        <div class="grade-copy" data-reveal>
+          <p class="eyebrow accent-edit">PROFESSIONAL COLOR</p>
+          <h2>Finish the look.</h2>
+          <p>Primary tools, RGB curves, HSL secondaries, scopes, LUTs, and saved Looks.</p>
         </div>
-        <div class="grade-board screenshot-card" aria-label="Chromis edit controls preview">
-          <img src="assets/chromis-edit-wide.png" alt="Chromis edit workspace with primary wheels, tool tabs, clip strip, and graded preview.">
+        <div class="grade-stage" data-reveal>
+          <img src="assets/chromis-edit-wide.png" alt="Chromis color grading workspace with color controls and a graded preview.">
+        </div>
+        <div class="mobile-grade" data-reveal>
+          <img src="assets/chromis-edit-mobile.jpeg" alt="Chromis mobile edit controls with a graded clip preview.">
         </div>
       </section>
 
-      <section class="workflow-section section-dark" id="workflow">
-        <div class="workflow-copy">
-          <p class="eyebrow accent-settings">WORKFLOW</p>
+      <section class="tracking-section" id="tracking">
+        <div class="tracking-media" aria-hidden="true">
+          <img src="assets/chromis-rocks.jpeg" alt="">
+        </div>
+        <div class="tracking-overlay" aria-hidden="true">
+          <i style="--x: 48%; --y: 66%; --delay: 0ms"></i>
+          <i style="--x: 56%; --y: 37%; --delay: 90ms"></i>
+          <i style="--x: 65%; --y: 56%; --delay: 180ms"></i>
+          <i style="--x: 74%; --y: 34%; --delay: 270ms"></i>
+          <i style="--x: 83%; --y: 48%; --delay: 360ms"></i>
+          <i style="--x: 59%; --y: 77%; --delay: 450ms"></i>
+        </div>
+        <div class="tracking-copy" data-reveal>
+          <p class="eyebrow accent-luts">VISUAL EFFECTS</p>
+          <h2>Track the camera too.</h2>
+          <p>Record Apple Log and camera tracking together, then export for Blender.</p>
+        </div>
+      </section>
+
+      <section class="workflow-section section-app" id="workflow">
+        <div class="workflow-heading" data-reveal>
+          <p class="eyebrow accent-workflow">WORKFLOW</p>
           <h2>From set to share.</h2>
+          <p>Chromis keeps every step in one continuous workspace.</p>
         </div>
-        <div class="workflow-line" aria-label="Chromis workflow">
-          <div class="workflow-step active">
-            <span>01</span>
+        <div class="workflow-grid" aria-label="Chromis workflow" data-reveal>
+          <article class="workflow-step workflow-capture">
+            <div class="workflow-icon" aria-hidden="true">
+              <span class="camera-glyph"></span>
+            </div>
+            <span class="workflow-number">01</span>
             <h3>Capture</h3>
-            <p>Set codec, resolution, frame rate, dynamic range, audio, monitor assists, and tracking.</p>
-          </div>
-          <div class="workflow-step">
-            <span>02</span>
+            <p>Log, ProRes, lens switching, monitor assists, and tracking.</p>
+          </article>
+          <article class="workflow-step workflow-review">
+            <div class="workflow-icon" aria-hidden="true">
+              <span class="library-glyph"></span>
+            </div>
+            <span class="workflow-number">02</span>
             <h3>Review</h3>
-            <p>Browse clips, inspect metadata, favorite takes, and send any shot directly into Edit.</p>
-          </div>
-          <div class="workflow-step">
-            <span>03</span>
+            <p>Organize clips, favorite takes, rename, and spot graded media.</p>
+          </article>
+          <article class="workflow-step workflow-grade">
+            <div class="workflow-icon" aria-hidden="true">
+              <span class="wheel-glyph"></span>
+            </div>
+            <span class="workflow-number">03</span>
             <h3>Grade</h3>
-            <p>Build reusable looks with primaries, curves, HSL, crop, and scopes.</p>
-          </div>
-          <div class="workflow-step">
-            <span>04</span>
+            <p>Build looks with curves, HSL, scopes, and LUT support.</p>
+          </article>
+          <article class="workflow-step workflow-export">
+            <div class="workflow-icon" aria-hidden="true">
+              <span class="export-glyph"></span>
+            </div>
+            <span class="workflow-number">04</span>
             <h3>Export</h3>
-            <p>Render the edited clip and save or share it from the same workspace.</p>
-          </div>
+            <p>Save the finished clip from the same creative workspace.</p>
+          </article>
         </div>
       </section>
 
-      <section class="final-section section-panel">
-        <div class="final-copy">
+      <section class="final-section section-black">
+        <div class="final-image" aria-hidden="true">
+          <img src="assets/chromis-lake.jpeg" alt="">
+        </div>
+        <div class="final-copy" data-reveal>
           <img src="assets/chromis-icon.png" alt="" class="final-icon">
           <p class="eyebrow">CHROMIS</p>
-          <h2>Shoot with intent.</h2>
-          <p>Built for solo shooters and small teams who want a cleaner path from capture to finished color.</p>
+          <h2>Make the shot yours.</h2>
+          <p>A complete mobile filmmaking workflow, from capture to final color.</p>
         </div>
       </section>
     </main>
@@ -132,7 +168,7 @@
             <img src="assets/chromis-icon.png" alt="">
             <span>Chromis</span>
           </a>
-          <p>Camera, media, and edit tools for intentional mobile filmmaking.</p>
+          <p>Professional filmmaking camera, color, and tracking tools for iPhone.</p>
           <a class="footer-email" href="mailto:contact@chromis.app">contact@chromis.app</a>
         </div>
         <nav aria-label="Footer pages">
