@@ -346,27 +346,27 @@ p {
 }
 
 .capture-section {
-  padding: 62px 20px 68px;
+  padding: 54px 20px 62px;
 }
 
 .capture-stage {
   position: relative;
-  width: min(1040px, 100%);
-  margin: 34px auto 0;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: stretch;
-  gap: clamp(20px, 4vw, 48px);
+  width: min(980px, 100%);
+  margin: 28px auto 0;
+}
+
+.capture-annotated {
+  position: relative;
+  padding: 54px 112px 68px;
 }
 
 .capture-frame {
   position: relative;
-  height: 390px;
-  min-height: 0;
   margin: 0;
   padding: 7px;
   overflow: hidden;
-  border-radius: 30px;
+  border-radius: 26px;
+  aspect-ratio: 1794 / 877;
   background: linear-gradient(145deg, #343438, #050506 52%, #232327);
   border: 1px solid rgba(255, 255, 255, 0.16);
   box-shadow: 0 34px 88px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
@@ -384,53 +384,75 @@ p {
 .capture-frame img {
   width: 100%;
   height: 100%;
-  min-height: 0;
-  border-radius: 22px;
+  border-radius: 18px;
   object-fit: cover;
 }
 
-.capture-phone {
-  width: auto;
-  height: 390px;
-}
-
-.capture-phone .phone-frame {
-  width: auto;
-  height: 100%;
-  border-radius: 36px;
-  box-shadow: 0 34px 88px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-
-.capture-phone .phone-frame img {
-  border-radius: 28px;
-}
-
-.capture-specs {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.capture-specs span {
-  min-height: 54px;
+.capture-callout {
+  position: absolute;
   display: flex;
   align-items: center;
-  padding: 0 16px;
-  border-radius: 8px;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 14px;
-  font-weight: 750;
+  left: var(--x);
+  top: var(--y);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-.capture-specs span:first-child {
-  background: linear-gradient(135deg, rgba(255, 46, 41, 0.18), rgba(255, 107, 51, 0.08));
+.callout-pin {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--camera-red);
+  box-shadow: 0 0 0 4px rgba(255, 46, 41, 0.18), 0 0 18px rgba(255, 46, 41, 0.45);
 }
 
-.capture-specs span:last-child {
-  background: linear-gradient(135deg, rgba(255, 107, 51, 0.14), rgba(255, 46, 41, 0.06));
+.callout-line {
+  height: 1px;
+  width: var(--line, 84px);
+  background: linear-gradient(90deg, rgba(255, 46, 41, 0.9), rgba(255, 255, 255, 0.34));
+}
+
+.callout-label {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: rgba(5, 5, 6, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+}
+
+.callout-left {
+  flex-direction: row-reverse;
+}
+
+.callout-left .callout-line {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.34), rgba(255, 46, 41, 0.9));
+}
+
+.callout-top,
+.callout-bottom {
+  transform: translateX(-50%);
+}
+
+.callout-top {
+  flex-direction: column-reverse;
+}
+
+.callout-bottom {
+  flex-direction: column;
+}
+
+.callout-top .callout-line,
+.callout-bottom .callout-line {
+  width: 1px;
+  height: var(--line, 56px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(255, 46, 41, 0.9));
+}
+
+.callout-bottom .callout-line {
+  background: linear-gradient(180deg, rgba(255, 46, 41, 0.9), rgba(255, 255, 255, 0.34));
 }
 
 .workflow-grid article {
@@ -545,69 +567,158 @@ p {
   font-size: 22px;
 }
 
-.workflow-panel {
-  width: min(var(--max), 100%);
-  margin: 40px auto 0;
-  padding: 18px;
-  border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(255, 194, 56, 0.12), rgba(255, 255, 255, 0.025) 46%),
-    rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.workflow-visual {
-  position: relative;
-  height: 70px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 8px;
-}
-
-.workflow-track {
-  position: relative;
-  width: min(760px, 86%);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: center;
-}
-
-.workflow-track::before {
-  content: "";
-  position: absolute;
-  left: 8%;
-  right: 8%;
-  top: 50%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 194, 56, 0.74), transparent);
-}
-
-.workflow-track span {
-  position: relative;
-  width: 14px;
-  height: 14px;
-  justify-self: center;
-  border-radius: 999px;
-  background: var(--workflow-amber);
-  box-shadow: 0 0 26px rgba(255, 194, 56, 0.28);
-}
-
 .workflow-grid {
+  width: min(var(--max), 100%);
+  margin: 44px auto 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  gap: 32px;
 }
 
 .workflow-grid article {
-  min-height: 190px;
-  align-items: flex-start;
+  position: relative;
+  min-height: 0;
+  align-items: center;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 22px;
-  background: rgba(5, 5, 6, 0.44);
+  justify-content: flex-start;
+  padding: 0;
+  text-align: center;
+  background: transparent;
+  border: 0;
 }
 
-.workflow-grid span {
+.workflow-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  right: -24px;
+  width: 16px;
+  height: 16px;
+  border-top: 2px solid rgba(255, 194, 56, 0.58);
+  border-right: 2px solid rgba(255, 194, 56, 0.58);
+  transform: rotate(45deg);
+}
+
+.workflow-icon {
+  position: relative;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 22px;
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 194, 56, 0.12), rgba(255, 255, 255, 0.035)),
+    rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025), 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+
+.workflow-icon::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 194, 56, 0.18), transparent 62%);
+}
+
+.workflow-icon > span {
+  position: relative;
+  display: block;
+}
+
+.camera-glyph {
+  width: 52px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.camera-glyph::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  width: 18px;
+  height: 10px;
+  border-radius: 5px 5px 0 0;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.camera-glyph::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 9px;
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  background: #101011;
+  box-shadow: inset 0 0 0 4px var(--workflow-amber);
+}
+
+.library-glyph {
+  width: 50px;
+  height: 58px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    -9px 7px 0 rgba(255, 255, 255, 0.18),
+    9px -7px 0 rgba(255, 255, 255, 0.12);
+}
+
+.library-glyph::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--workflow-amber);
+}
+
+.wheel-glyph {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, #101011 0 22%, transparent 23%),
+    conic-gradient(#ff2e29, #ffc238, #2ed666, #14d1f2, #2985ff, #eb2f8d, #ff2e29);
+  box-shadow: inset 0 0 0 7px rgba(0, 0, 0, 0.28);
+}
+
+.export-glyph {
+  width: 52px;
+  height: 46px;
+  border: 3px solid rgba(255, 255, 255, 0.82);
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+
+.export-glyph::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: -22px;
+  width: 3px;
+  height: 38px;
+  background: var(--workflow-amber);
+}
+
+.export-glyph::after {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: -23px;
+  width: 14px;
+  height: 14px;
+  border-left: 3px solid var(--workflow-amber);
+  border-top: 3px solid var(--workflow-amber);
+  transform: rotate(45deg);
+}
+
+.workflow-number {
   color: var(--workflow-amber);
   font-size: 13px;
   font-weight: 900;
@@ -615,11 +726,12 @@ p {
 }
 
 .workflow-grid h3 {
-  margin-top: 36px;
+  margin-top: 12px;
 }
 
 .workflow-grid p {
-  margin: 16px 0 0;
+  max-width: 220px;
+  margin: 12px auto 0;
   font-size: 16px;
 }
 
@@ -637,8 +749,8 @@ p {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(0deg, rgba(5, 5, 6, 0.96), rgba(5, 5, 6, 0.46)),
-    linear-gradient(90deg, rgba(5, 5, 6, 0.74), rgba(5, 5, 6, 0.36));
+    linear-gradient(0deg, rgba(5, 5, 6, 0.89), rgba(5, 5, 6, 0.37)),
+    linear-gradient(90deg, rgba(5, 5, 6, 0.66), rgba(5, 5, 6, 0.27));
 }
 
 .final-image {
@@ -826,21 +938,13 @@ p {
       linear-gradient(90deg, rgba(5, 5, 6, 0.7), rgba(5, 5, 6, 0.08));
   }
 
-  .capture-stage {
-    grid-template-columns: 1fr;
-    gap: 38px;
-  }
-
-  .capture-phone {
-    justify-self: center;
-  }
-
-  .capture-specs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .workflow-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 42px;
+  }
+
+  .workflow-step:not(:last-child)::after {
+    display: none;
   }
 }
 
@@ -925,22 +1029,20 @@ p {
     border-radius: 38px;
   }
 
-  .capture-specs,
   .workflow-grid {
     grid-template-columns: 1fr;
   }
 
-  .capture-frame {
-    height: 260px;
+  .capture-annotated {
+    padding: 0;
   }
 
-  .capture-phone {
-    width: auto;
-    height: 260px;
+  .capture-callout {
+    display: none;
   }
 
   .workflow-grid article {
-    min-height: 180px;
+    min-height: 0;
   }
 
   .footer-inner {

@@ -55,20 +55,38 @@
           <p>Record in Apple Log, monitor with LUTs, and keep every manual control close.</p>
         </div>
 
-        <div class="capture-stage" data-reveal>
-          <figure class="capture-frame">
-            <img src="assets/chromis-ridge.jpeg" alt="Mountain ridge footage captured with Chromis.">
-          </figure>
-          <div class="capture-phone" aria-label="Chromis camera interface preview">
-            <div class="phone-frame">
-              <img src="assets/chromis-camera.png" alt="Chromis camera screen with live monitor assists and capture controls.">
+        <div class="capture-stage annotated-stage" data-reveal>
+          <div class="capture-annotated" aria-label="Chromis camera interface feature callouts">
+            <figure class="capture-frame">
+              <img src="assets/chromis-camera-wide-annotated.png" alt="Chromis camera interface showing Apple Log, ProRes, manual controls, grid, histogram, audio meters, zoom, and preview LUT selection.">
+            </figure>
+
+            <!-- Tweak callouts here: --x moves right/left, --y moves down/up, --line changes connector length. -->
+            <div class="capture-callout callout-left" style="--x:-6%; --y: 50%; --line: 98px;">
+              <span class="callout-pin"></span>
+              <span class="callout-line"></span>
+              <span class="callout-label">Manual exposure</span>
             </div>
-          </div>
-          <div class="capture-specs" aria-label="Professional camera features">
-            <span>Apple Log</span>
-            <span>ProRes</span>
-            <span>Manual ISO, shutter, white balance, and focus</span>
-            <span>Histogram, horizon, grid, and preview LUTs</span>
+            <div class="capture-callout callout-bottom" style="--x: 31%; --y: 85%; --line: 26px;">
+              <span class="callout-pin"></span>
+              <span class="callout-line"></span>
+              <span class="callout-label">Live histogram</span>
+            </div>
+            <div class="capture-callout callout-top" style="--x: 65%; --y: 2%; --line: 14px;">
+              <span class="callout-pin"></span>
+              <span class="callout-line"></span>
+              <span class="callout-label">ProRes capture</span>
+            </div>
+            <div class="capture-callout callout-right" style="--x: 83%; --y: 13%; --line: 74px;">
+              <span class="callout-pin"></span>
+              <span class="callout-line"></span>
+              <span class="callout-label">Preview LUT selector</span>
+            </div>
+            <div class="capture-callout callout-right" style="--x: 88%; --y: 37%; --line: 28px;">
+              <span class="callout-pin"></span>
+              <span class="callout-line"></span>
+              <span class="callout-label">Lens zoom</span>
+            </div>
           </div>
         </div>
       </section>
@@ -150,7 +168,7 @@
 
       <section class="final-section section-black">
         <div class="final-image" aria-hidden="true">
-          <img src="assets/chromis-lake.jpeg" alt="">
+          <img src="assets/chromis-forest.jpeg" alt="">
         </div>
         <div class="final-copy" data-reveal>
           <img src="assets/chromis-icon.png" alt="" class="final-icon">
