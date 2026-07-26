@@ -250,6 +250,30 @@ p {
   font-size: 34px;
   font-weight: 800;
   line-height: 1.05;
+  min-height: 1.05em;
+}
+
+.type-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.86em;
+  margin-left: 5px;
+  transform: translateY(0.08em);
+  border-radius: 999px;
+  background: currentColor;
+  animation: cursor-blink 900ms steps(2, start) infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  44% {
+    opacity: 1;
+  }
+
+  45%,
+  100% {
+    opacity: 0;
+  }
 }
 
 .hero-subtitle {
@@ -421,6 +445,101 @@ p {
   background: rgba(5, 5, 6, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.09);
   backdrop-filter: blur(14px);
+}
+
+.motion-ready .capture-stage .callout-pin,
+.motion-ready .capture-stage .callout-line,
+.motion-ready .capture-stage .callout-label {
+  opacity: 0;
+}
+
+.motion-ready .capture-stage .callout-pin {
+  transform: scale(0.64);
+}
+
+.motion-ready .capture-stage .callout-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.motion-ready .capture-stage .callout-label {
+  transform: translateX(-6px);
+}
+
+.motion-ready .capture-stage .callout-left .callout-line {
+  transform-origin: right center;
+}
+
+.motion-ready .capture-stage .callout-left .callout-label,
+.motion-ready .capture-stage .callout-bottom .callout-label,
+.motion-ready .capture-stage .callout-top .callout-label {
+  transform: translateY(6px);
+}
+
+.motion-ready .capture-stage .callout-top .callout-label {
+  transform: translateY(-6px);
+}
+
+.motion-ready .capture-stage .callout-top .callout-line,
+.motion-ready .capture-stage .callout-bottom .callout-line {
+  transform: scaleY(0);
+}
+
+.motion-ready .capture-stage .callout-top .callout-line {
+  transform-origin: bottom center;
+}
+
+.motion-ready .capture-stage .callout-bottom .callout-line {
+  transform-origin: top center;
+}
+
+.motion-ready .capture-stage.is-visible .callout-pin {
+  animation: calloutPinIn 620ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.motion-ready .capture-stage.is-visible .callout-line {
+  animation: calloutLineIn 760ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.motion-ready .capture-stage.is-visible .callout-top .callout-line,
+.motion-ready .capture-stage.is-visible .callout-bottom .callout-line {
+  animation-name: calloutLineInVertical;
+}
+
+.motion-ready .capture-stage.is-visible .callout-label {
+  animation: calloutLabelIn 580ms ease forwards;
+}
+
+.motion-ready .capture-stage.is-visible .capture-callout {
+  --callout-delay: 0ms;
+}
+
+.motion-ready .capture-stage.is-visible .capture-callout:nth-of-type(2) {
+  --callout-delay: 90ms;
+}
+
+.motion-ready .capture-stage.is-visible .capture-callout:nth-of-type(3) {
+  --callout-delay: 180ms;
+}
+
+.motion-ready .capture-stage.is-visible .capture-callout:nth-of-type(4) {
+  --callout-delay: 270ms;
+}
+
+.motion-ready .capture-stage.is-visible .capture-callout:nth-of-type(5) {
+  --callout-delay: 360ms;
+}
+
+.motion-ready .capture-stage.is-visible .callout-pin {
+  animation-delay: var(--callout-delay);
+}
+
+.motion-ready .capture-stage.is-visible .callout-line {
+  animation-delay: calc(var(--callout-delay) + 130ms);
+}
+
+.motion-ready .capture-stage.is-visible .callout-label {
+  animation-delay: calc(var(--callout-delay) + 410ms);
 }
 
 .callout-left {
@@ -891,13 +1010,47 @@ p {
 .workflow-step:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 50px;
-  right: -24px;
-  width: 16px;
-  height: 16px;
-  border-top: 2px solid rgba(255, 194, 56, 0.58);
-  border-right: 2px solid rgba(255, 194, 56, 0.58);
+  top: 52px;
+  right: -26px;
+  width: 9px;
+  height: 9px;
+  border-top: 1.5px solid rgba(255, 194, 56, 0.62);
+  border-right: 1.5px solid rgba(255, 194, 56, 0.62);
   transform: rotate(45deg);
+}
+
+.workflow-step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 56px;
+  right: -23px;
+  width: 20px;
+  height: 1.5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 194, 56, 0.18), rgba(255, 194, 56, 0.5));
+}
+
+.motion-ready .workflow-grid .workflow-step:not(:last-child)::before,
+.motion-ready .workflow-grid .workflow-step:not(:last-child)::after {
+  opacity: 0.34;
+}
+
+.motion-ready .workflow-grid.is-visible .workflow-step:not(:last-child)::before {
+  animation: workflowSweep 7s linear infinite;
+}
+
+.motion-ready .workflow-grid.is-visible .workflow-step:not(:last-child)::after {
+  animation: workflowArrowGlow 7s linear infinite;
+}
+
+.motion-ready .workflow-grid.is-visible .workflow-step:nth-child(2)::before,
+.motion-ready .workflow-grid.is-visible .workflow-step:nth-child(2)::after {
+  animation-delay: 2s;
+}
+
+.motion-ready .workflow-grid.is-visible .workflow-step:nth-child(3)::before,
+.motion-ready .workflow-grid.is-visible .workflow-step:nth-child(3)::after {
+  animation-delay: 4s;
 }
 
 .workflow-icon {
@@ -1058,6 +1211,14 @@ p {
   z-index: -2;
 }
 
+.final-image img {
+  --final-parallax: 0px;
+  height: calc(100% + 48px);
+  margin-top: -24px;
+  transform: translate3d(0, var(--final-parallax), 0) scale(1.04);
+  will-change: transform;
+}
+
 .final-copy {
   width: min(680px, 100%);
   text-align: center;
@@ -1205,6 +1366,104 @@ p {
   }
 }
 
+@keyframes calloutPinIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.64);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes calloutLineIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes calloutLineInVertical {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes calloutLabelIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes workflowSweep {
+  0% {
+    opacity: 0.34;
+    filter: drop-shadow(0 0 0 rgba(255, 194, 56, 0));
+  }
+
+  6% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 194, 56, 0.34));
+  }
+
+  15% {
+    opacity: 0.58;
+    filter: drop-shadow(0 0 0 rgba(255, 194, 56, 0));
+  }
+
+  16%,
+  100% {
+    opacity: 0.34;
+    filter: drop-shadow(0 0 0 rgba(255, 194, 56, 0));
+  }
+}
+
+@keyframes workflowArrowGlow {
+  0% {
+    opacity: 0.34;
+    filter: drop-shadow(0 0 0 rgba(255, 194, 56, 0));
+  }
+
+  6% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 194, 56, 0.34));
+  }
+
+  15% {
+    opacity: 0.58;
+    filter: drop-shadow(0 0 0 rgba(255, 194, 56, 0));
+  }
+
+  16%,
+  100% {
+    opacity: 0.34;
+    filter: drop-shadow(0 0 0 rgba(255, 194, 56, 0));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1221,6 +1480,16 @@ p {
 
   [data-reveal] {
     opacity: 1;
+    transform: none;
+  }
+
+  .type-cursor {
+    display: none;
+  }
+
+  .final-image img {
+    height: 100%;
+    margin-top: 0;
     transform: none;
   }
 }
@@ -1254,6 +1523,7 @@ p {
     justify-self: center;
   }
 
+  .workflow-step:not(:last-child)::before,
   .workflow-step:not(:last-child)::after {
     display: none;
   }
