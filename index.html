@@ -97,8 +97,31 @@
           <h2>Finish the look.</h2>
           <p>Primary tools, RGB curves, HSL secondaries, scopes, LUTs, and saved Looks.</p>
         </div>
-        <div class="grade-stage" data-reveal>
-          <img src="assets/chromis-edit-wide.png" alt="Chromis color grading workspace with color controls and a graded preview.">
+        <div class="grade-showcase" data-reveal>
+          <div class="grade-stage">
+            <img src="assets/chromis-edit-wide.png" alt="Chromis color grading workspace with color controls and a graded preview.">
+          </div>
+          <div class="vectorscope-card is-vectorscope" aria-label="Color scope preview" data-scope-card>
+            <div class="scope-tabs" aria-label="Scope type">
+              <button type="button" data-scope-button="waveform" aria-pressed="false">Waveform</button>
+              <button type="button" data-scope-button="histogram" aria-pressed="false">Histogram</button>
+              <button type="button" class="active" data-scope-button="vectorscope" aria-pressed="true">Vectorscope</button>
+            </div>
+            <div class="scope-field" aria-hidden="true">
+              <span class="scope-circle"></span>
+              <span class="scope-trace"></span>
+              <span class="waveform-trace">
+                <i class="wave-red"></i>
+                <i class="wave-green"></i>
+                <i class="wave-blue"></i>
+              </span>
+              <span class="histogram-bars">
+                <i class="histogram-line histogram-red"></i>
+                <i class="histogram-line histogram-green"></i>
+                <i class="histogram-line histogram-blue"></i>
+              </span>
+            </div>
+          </div>
         </div>
         <div class="mobile-grade" data-reveal>
           <img src="assets/chromis-edit-mobile.jpeg" alt="Chromis mobile edit controls with a graded clip preview.">

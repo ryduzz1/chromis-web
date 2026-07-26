@@ -469,9 +469,17 @@ p {
     linear-gradient(180deg, #050506 0%, #0c0c0e 42%, #050506 100%);
 }
 
-.grade-stage {
-  width: min(900px, 100%);
+.grade-showcase {
+  width: min(1120px, 100%);
   margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  align-items: stretch;
+  gap: 14px;
+}
+
+.grade-stage,
+.vectorscope-card {
   padding: 8px;
   border-radius: 8px;
   background: linear-gradient(145deg, #303036, #070708 48%, #242428);
@@ -481,7 +489,300 @@ p {
 
 .grade-stage img {
   width: 100%;
+  height: 100%;
   border-radius: 4px;
+  object-fit: cover;
+}
+
+.vectorscope-card {
+  position: relative;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 14px;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(48, 48, 54, 0.76), rgba(7, 7, 8, 0.98) 50%, rgba(36, 36, 40, 0.8)),
+    #050506;
+}
+
+.scope-tabs {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  padding: 0;
+  border-radius: 10px;
+  background: transparent;
+}
+
+.scope-tabs button {
+  min-height: 42px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 9px;
+  color: rgba(255, 255, 255, 0.58);
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.scope-tabs button:hover {
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.scope-tabs button.active {
+  color: white;
+  background: var(--edit-green);
+  box-shadow: 0 14px 28px rgba(46, 214, 102, 0.18);
+}
+
+.scope-field {
+  position: relative;
+  min-height: 230px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 16px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 33.33% / 100% 33.33%,
+    #020203;
+}
+
+.scope-field::before,
+.scope-field::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.scope-field::before {
+  content: "VECTORSCOPE";
+  z-index: 3;
+  left: 14px;
+  top: 14px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.vectorscope-card.is-waveform .scope-field::before {
+  content: "WAVEFORM";
+}
+
+.vectorscope-card.is-histogram .scope-field::before {
+  content: "HISTOGRAM";
+}
+
+.scope-field::after {
+  inset: 0;
+}
+
+.vectorscope-card.is-waveform .scope-field {
+  background:
+    linear-gradient(90deg, transparent 0 33.1%, rgba(255, 255, 255, 0.11) 33.1% 33.45%, transparent 33.45% 66.55%, rgba(255, 255, 255, 0.11) 66.55% 66.9%, transparent 66.9%),
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 25% / 100% 25%,
+    #020203;
+}
+
+.vectorscope-card.is-histogram .scope-field {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 25% / 100% 25%,
+    #020203;
+}
+
+.scope-circle {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: min(230px, 82%);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+.scope-trace {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  width: 22px;
+  height: 142px;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 48% 12%, rgba(255, 255, 255, 0.95) 0 12%, transparent 17%),
+    radial-gradient(ellipse at 50% 43%, rgba(255, 255, 255, 0.96) 0 24%, rgba(255, 255, 255, 0.36) 35%, transparent 62%),
+    radial-gradient(ellipse at 50% 78%, rgba(255, 255, 255, 0.82) 0 18%, rgba(255, 255, 255, 0.24) 31%, transparent 60%);
+  filter: blur(0.4px);
+  box-shadow:
+    -10px 8px 10px rgba(255, 255, 255, 0.2),
+    8px -12px 10px rgba(255, 255, 255, 0.15),
+    16px 36px 12px rgba(255, 255, 255, 0.13);
+}
+
+.scope-trace::before,
+.scope-trace::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  filter: blur(1px);
+}
+
+.scope-trace::before {
+  left: -13px;
+  top: 18px;
+  width: 30px;
+  height: 80px;
+}
+
+.scope-trace::after {
+  right: -12px;
+  bottom: 8px;
+  width: 20px;
+  height: 50px;
+}
+
+.waveform-trace,
+.histogram-bars {
+  display: none;
+}
+
+.vectorscope-card.is-waveform .scope-circle,
+.vectorscope-card.is-waveform .scope-trace,
+.vectorscope-card.is-histogram .scope-circle,
+.vectorscope-card.is-histogram .scope-trace {
+  display: none;
+}
+
+.vectorscope-card.is-waveform .waveform-trace {
+  position: absolute;
+  inset: 20% 2% 12%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+}
+
+.vectorscope-card.is-waveform .waveform-trace i {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  font-style: normal;
+}
+
+.vectorscope-card.is-waveform .waveform-trace i::before {
+  content: "";
+  position: absolute;
+  inset: 4% 4% 14%;
+  opacity: 0.88;
+  filter: blur(0.25px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8% 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 8% 88%, transparent);
+}
+
+.vectorscope-card.is-waveform .waveform-trace i::after {
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.36);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.vectorscope-card.is-waveform .wave-red::before {
+  background:
+    radial-gradient(ellipse at 52% 42%, rgba(255, 62, 66, 0.4) 0 22%, transparent 44%),
+    radial-gradient(circle at 12% 34%, rgba(255, 62, 66, 0.78) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 28% 58%, rgba(255, 62, 66, 0.56) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 58% 48%, rgba(255, 62, 66, 0.68) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 82% 70%, rgba(255, 62, 66, 0.48) 0 1px, transparent 1.8px);
+  background-size: auto, 15px 17px, 21px 19px, 18px 14px, 23px 21px;
+}
+
+.vectorscope-card.is-waveform .wave-green::before {
+  background:
+    radial-gradient(ellipse at 48% 36%, rgba(48, 210, 92, 0.42) 0 24%, transparent 46%),
+    radial-gradient(circle at 16% 38%, rgba(48, 210, 92, 0.8) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 36% 62%, rgba(48, 210, 92, 0.56) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 64% 45%, rgba(48, 210, 92, 0.72) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 86% 30%, rgba(48, 210, 92, 0.5) 0 1px, transparent 1.8px);
+  background-size: auto, 16px 15px, 22px 20px, 17px 21px, 24px 18px;
+}
+
+.vectorscope-card.is-waveform .wave-blue::before {
+  background:
+    radial-gradient(ellipse at 48% 27%, rgba(68, 132, 255, 0.36) 0 22%, transparent 44%),
+    radial-gradient(ellipse at 52% 70%, rgba(68, 132, 255, 0.34) 0 20%, transparent 42%),
+    radial-gradient(circle at 14% 28%, rgba(68, 132, 255, 0.72) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 44% 70%, rgba(68, 132, 255, 0.58) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 78% 48%, rgba(68, 132, 255, 0.68) 0 1px, transparent 1.7px);
+  background-size: auto, auto, 16px 15px, 21px 19px, 18px 16px;
+}
+
+.vectorscope-card.is-waveform .wave-red::after {
+  content: "R";
+}
+
+.vectorscope-card.is-waveform .wave-green::after {
+  content: "G";
+}
+
+.vectorscope-card.is-waveform .wave-blue::after {
+  content: "B";
+}
+
+.vectorscope-card.is-histogram .histogram-bars {
+  position: absolute;
+  inset: 20% 4% 11%;
+  display: block;
+  background: none;
+}
+
+.vectorscope-card.is-histogram .histogram-line {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0.82;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+
+.vectorscope-card.is-histogram .histogram-line::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+}
+
+.vectorscope-card.is-histogram .histogram-red {
+  color: rgb(255, 74, 74);
+}
+
+.vectorscope-card.is-histogram .histogram-red::before {
+  clip-path: polygon(0 42%, 4% 58%, 8% 60%, 12% 36%, 16% 40%, 20% 18%, 24% 46%, 28% 22%, 32% 40%, 36% 44%, 40% 24%, 46% 55%, 52% 70%, 58% 78%, 64% 84%, 72% 96%, 100% 100%, 100% 98%, 72% 94%, 64% 81%, 58% 75%, 52% 67%, 46% 52%, 40% 21%, 36% 41%, 32% 37%, 28% 19%, 24% 43%, 20% 15%, 16% 37%, 12% 33%, 8% 57%, 4% 55%, 0 39%);
+}
+
+.vectorscope-card.is-histogram .histogram-green {
+  color: rgb(48, 210, 92);
+}
+
+.vectorscope-card.is-histogram .histogram-green::before {
+  clip-path: polygon(0 96%, 8% 82%, 14% 26%, 20% 4%, 28% 40%, 36% 96%, 44% 58%, 50% 6%, 56% 24%, 62% 42%, 68% 12%, 74% 36%, 82% 90%, 92% 100%, 100% 100%, 100% 98%, 92% 98%, 82% 87%, 74% 33%, 68% 9%, 62% 39%, 56% 21%, 50% 3%, 44% 55%, 36% 94%, 28% 37%, 20% 1%, 14% 23%, 8% 79%, 0 93%);
+}
+
+.vectorscope-card.is-histogram .histogram-blue {
+  color: rgb(64, 142, 255);
+}
+
+.vectorscope-card.is-histogram .histogram-blue::before {
+  clip-path: polygon(0 100%, 6% 22%, 12% 28%, 18% 88%, 26% 95%, 36% 82%, 42% 66%, 48% 76%, 56% 96%, 64% 100%, 70% 20%, 76% 70%, 84% 92%, 100% 100%, 100% 98%, 84% 89%, 76% 67%, 70% 17%, 64% 98%, 56% 94%, 48% 73%, 42% 63%, 36% 79%, 26% 93%, 18% 85%, 12% 25%, 6% 19%, 0 98%);
 }
 
 .mobile-grade {
@@ -943,6 +1244,16 @@ p {
     row-gap: 42px;
   }
 
+  .grade-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .vectorscope-card {
+    width: min(420px, 100%);
+    min-height: 280px;
+    justify-self: center;
+  }
+
   .workflow-step:not(:last-child)::after {
     display: none;
   }
@@ -1010,7 +1321,7 @@ p {
     padding: 58px 20px;
   }
 
-  .grade-stage {
+  .grade-showcase {
     display: none;
   }
 
