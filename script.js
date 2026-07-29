@@ -109,6 +109,84 @@ if (!prefersReducedMotion) {
     });
   }
 
+  document.querySelectorAll("[data-spin-ring]").forEach((host) => {
+    const ring = host.querySelector(".button-ring");
+
+    if (!ring || typeof ring.animate !== "function" || typeof DOMMatrixReadOnly !== "function") {
+      return;
+    }
+
+    let playing = [];
+
+    const currentAngle = () => {
+      const transform = window.getComputedStyle(ring).transform;
+
+      if (!transform || transform === "none") {
+        return 0;
+      }
+
+      try {
+        const matrix = new DOMMatrixReadOnly(transform);
+        return (Math.atan2(matrix.b, matrix.a) * 180) / Math.PI;
+      } catch (error) {
+        return 0;
+      }
+    };
+
+    const spin = (keyframes, options) => {
+      const animation = ring.animate(keyframes, options);
+      playing.push(animation);
+      return animation;
+    };
+
+    // Read the live angle first, then drop the old animations so the new one
+    // picks up exactly where the ring is instead of snapping back to zero.
+    const takeOver = () => {
+      const angle = currentAngle();
+      playing.forEach((animation) => animation.cancel());
+      playing = [];
+      return angle;
+    };
+
+    const spinUp = () => {
+      const from = takeOver();
+
+      const whip = spin(
+        [{ transform: `rotate(${from}deg)` }, { transform: `rotate(${from + 540}deg)` }],
+        { duration: 620, easing: "cubic-bezier(0.08, 0.82, 0.16, 1)", fill: "forwards" }
+      );
+
+      whip.finished.then(
+        () => {
+          if (!playing.includes(whip)) {
+            return;
+          }
+
+          spin(
+            [{ transform: `rotate(${from + 540}deg)` }, { transform: `rotate(${from + 900}deg)` }],
+            { duration: 6000, easing: "linear", iterations: Infinity }
+          );
+        },
+        () => {}
+      );
+    };
+
+    const spinDown = () => {
+      const from = takeOver();
+
+      spin(
+        [{ transform: `rotate(${from}deg)` }, { transform: `rotate(${from + 32}deg)` }],
+        { duration: 900, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "forwards" }
+      );
+    };
+
+    host.addEventListener("pointerenter", spinUp);
+    host.addEventListener("pointerleave", spinDown);
+    host.addEventListener("pointercancel", spinDown);
+    host.addEventListener("focus", spinUp);
+    host.addEventListener("blur", spinDown);
+  });
+
   const finalSection = document.querySelector(".final-section");
   const finalImage = document.querySelector(".final-image img");
   let parallaxFrame = null;
